@@ -77,6 +77,11 @@ button {
 <div id="player"></div>
 
 <script>
+    function scrollSuave() {
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth"
+    });
 const el = document.getElementById("mensagem");
 function adicionarFoto(src) {
     const img = document.createElement("img");
@@ -133,11 +138,7 @@ function onYouTubeIframeAPIReady() {
         }
     });
 }
-function scrollSuave() {
-    window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: "smooth"
-    });
+
 }
 function iniciarExperiencia() {
 
