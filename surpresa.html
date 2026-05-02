@@ -88,6 +88,7 @@ function adicionarFoto(src) {
     setTimeout(() => {
         img.classList.add("mostrar");
     }, 50);
+    scrollSuave();
 }
 
 const partes = [
@@ -132,7 +133,12 @@ function onYouTubeIframeAPIReady() {
         }
     });
 }
-
+function scrollSuave() {
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth"
+    });
+}
 function iniciarExperiencia() {
 
     // tocar música (AGORA FUNCIONA)
@@ -142,6 +148,7 @@ function iniciarExperiencia() {
     partes.forEach((parte, index) => {
     setTimeout(() => {
         el.innerHTML += parte.texto + "\n\n";
+    scrollSuave();
 
         // MOSTRAR FOTO JUNTO COM MOMENTOS IMPORTANTES
         if (index === 1) adicionarFoto("foto1.jpg");
