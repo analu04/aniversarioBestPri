@@ -69,7 +69,7 @@ button {
 
 <div class="container">
     <h1>Priscila ✨</h1>
-<button onclick="iniciarExperiencia()">Clique para começar 💚</button>
+<button onclick="iniciarExperiencia(this)">Clique para começar 💚</button>
     <div id="mensagem"></div>
 </div>
 
@@ -140,26 +140,29 @@ function onYouTubeIframeAPIReady() {
 }
 
 }
-function iniciarExperiencia() {
+function iniciarExperiencia(botao) {
 
-    // tocar música (AGORA FUNCIONA)
-    player.playVideo();
+    if (player && player.playVideo) {
+        player.playVideo();
+    }
 
-    // mensagens
     partes.forEach((parte, index) => {
-    setTimeout(() => {
-        el.innerHTML += parte.texto + "\n\n";
-    scrollSuave();
+        setTimeout(() => {
+            el.innerHTML += parte.texto + "\n\n";
+            scrollSuave();
 
-        // MOSTRAR FOTO JUNTO COM MOMENTOS IMPORTANTES
-        if (index === 1) adicionarFoto("foto1.jpg");
-        if (index === 4) adicionarFoto("foto2.jpg");
-        if (index === 6) adicionarFoto("foto3.jpg");
-        if (index === 8) adicionarFoto("foto4.jpg");
-        if (index === 10) adicionarFoto("foto5.jpg");
-        if (index === 14) adicionarFoto("foto6.jpg");
-    }, parte.tempo);
-});
+            if (index === 1) adicionarFoto("foto1.jpg");
+            if (index === 4) adicionarFoto("foto2.jpg");
+            if (index === 6) adicionarFoto("foto3.jpg");
+            if (index === 8) adicionarFoto("foto4.jpg");
+            if (index === 10) adicionarFoto("foto5.jpg");
+            if (index === 14) adicionarFoto("foto6.jpg");
+
+        }, parte.tempo);
+    });
+
+    botao.style.display = "none";
+}
 
     // esconder botão
     event.target.style.display = "none";
